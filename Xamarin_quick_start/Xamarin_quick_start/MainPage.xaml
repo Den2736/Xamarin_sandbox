@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xamarin_quick_start"
+             x:Class="Xamarin_quick_start.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+    	<Label Text="Heeey! Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+    </StackLayout>
+
+</ContentPage>
