@@ -5,10 +5,8 @@
              x:Class="Xamarin_quick_start.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Heeey! Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="phoneNumber" Placeholder="Enter a phone number"/>
+        <Button Text="Call" Clicked="Button_Clicked"/>
     </StackLayout>
 
 </ContentPage>
