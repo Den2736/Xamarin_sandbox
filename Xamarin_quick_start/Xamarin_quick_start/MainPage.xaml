@@ -5,8 +5,8 @@
              x:Class="Xamarin_quick_start.MainPage">
 
     <StackLayout>
-        <Entry x:Name="phoneNumber" Placeholder="Enter a phone number"/>
-        <Button Text="Call" Clicked="Button_Clicked"/>
+        <Entry x:Name="phoneNumberEntry" Placeholder="Enter a phone number"/>
+        <Button x:Name="callButton" Text="Call" Clicked="callButton_Clicked"/>
     </StackLayout>
 
 </ContentPage>

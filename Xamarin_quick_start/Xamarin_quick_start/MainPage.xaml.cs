@@ -14,8 +14,15 @@ namespace Xamarin_quick_start
 			InitializeComponent();
 		}
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void callButton_Clicked(object sender, EventArgs e)
         {
+            var phoneNumber = phoneNumberEntry.Text;
+            var alert = await this.DisplayAlert("Confirm dial", $"Would you like to call {phoneNumber}", "Yes", "No");
+            if (alert)
+            {
+                var dialer = DependencyService.Get<IDialer>();
+                dialer?.Dial(phoneNumber);
+            }
         }
     }
 }
