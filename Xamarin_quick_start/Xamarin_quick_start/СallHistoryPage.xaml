@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:local="clr-namespace:Xamarin_quick_start;assembly=Xamarin_quick_start"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin_quick_start.СallHistoryPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="Android" Value="20"/>
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{x:Static local:App.CallHistory}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

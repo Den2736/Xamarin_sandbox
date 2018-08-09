@@ -7,6 +7,7 @@
     <StackLayout>
         <Entry x:Name="phoneNumberEntry" Placeholder="Enter a phone number"/>
         <Button x:Name="callButton" Text="Call" Clicked="callButton_Clicked"/>
+        <Button x:Name="callHistoryButton" Text="Call history" IsEnabled="False" Clicked="callHistoryButton_Clicked"/>
     </StackLayout>
 
 </ContentPage>

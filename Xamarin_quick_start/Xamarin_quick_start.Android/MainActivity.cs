@@ -26,4 +26,3 @@ namespace Xamarin_quick_start.Droid
         }
     }
 }
-

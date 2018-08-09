@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.Xamarin_quick_start">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.companyname.Xamarin_quick_start" android:installLocation="auto" android:versionCode="1" android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="26" />
 	<application android:label="Xamarin_quick_start.Android"></application>
 </manifest>

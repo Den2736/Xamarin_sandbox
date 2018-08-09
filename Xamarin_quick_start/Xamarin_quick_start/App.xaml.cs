@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,11 +8,13 @@ namespace Xamarin_quick_start
 {
 	public partial class App : Application
 	{
+        public static IList<string> CallHistory { get; set; }
+
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new MainPage();
+            CallHistory = new List<string>();
+			MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()

@@ -2,7 +2,7 @@ Phoneword
 =========
 
 Первый проект сделаю по этому
-[руководству](https://docs.microsoft.com/ru-ru/xamarin/xamarin-forms/get-started/hello-xamarin-forms/quickstart?tabs=vswin)
+[руководству](https://docs.microsoft.com/ru-ru/xamarin/xamarin-forms/get-started/)
 
 ----- Первый запуск -----
 -------------------------
@@ -51,3 +51,58 @@ Phoneword
 вызывается.
 
 А вот на эмуляторе работает. Так не интересно.
+
+**09.08**
+
+На эмуляторе OnCreate вызывается при создании формы (да, логично).
+Теперь нужно выяснить, дело в отладке на телефоне, или же в самом
+телефоне. Для этого нужно сгенерить .apk и установить на устройстве.
+
+----- Archive -----
+-------------------
+
+Для архивации в свойствах Android-проекта нужно отключить *Shared Mono
+runtime*. Затем во время архивации появляется сообщение
+
+> Please ensure that you are using a release configuration and that "Use
+> Shared Mono Runtime" option unchecked
+
+На [форуме](https://github.com/xamarin/xamarin-android/issues/1760)
+одним из советов было перезагрузить студию - помогло.
+
+Архив был создан, но установить его не удалось. Подозреваю, что дело
+версии Android - пакет нацелен на версию 8.1, а телефон 8.0. Скачал sdk
+для 8.0, в свойствах проекта поменял версию, встретился с множеством
+ошибок аналогичных следующей.
+
+### Error: Xamarin.Android.Support.v7.AppCompat
+
+На
+[форуме](https://stackoverflow.com/questions/47988647/xamarin-error-after-updating-visual-studio-2017-to-version-15-5-2)
+одним из советов было удалить AppCompatActivity - помогло.
+
+Всё равно не удаётся установить приложение.
+
+Сформировал на телефоне bugreport в 255 000 строк, где отыскал
+следующее:
+
+> \[line 202509\] Historical install sessions: Session 1733822157:
+> userId=0 installerPackageName=com.google.android.packageinstaller
+> installerUid=10024 createdMillis=1533799659695 s
+> tageDir=/data/app/vmdl1733822157.tmp stageCid=null mode=1
+> installFlags=0x12 installLocation=0 sizeBytes=17946700
+> appPackageName=com.companyname.Xamarin\_quick\_start a ppIcon=false
+> appLabel=null originatingUri=null originatingUid=10119
+> referrerUri=null abiOverride=null volumeUuid=null
+> grantedRuntimePermissions=null mClientProgress=1.0 mProgress=0.8
+> mSealed=true mPermissionsAccepted=true mRelinquished=false
+> mDestroyed=true mFds= 0 mBridges=1 mFinalStatus=-103
+> mFinalMessage=Failed to collect certificates from
+> /data/app/vmdl1733822157.tmp/PackageInstaller: Attempt to get length
+> of null array
+
+Значит, не обнаружен сертификат. По данному
+[руководству](https://docs.microsoft.com/ru-ru/xamarin/android/deploy-test/signing/index?tabs=vswin)
+сгенерировал сертификат и сформировал подписанный .ask файл. Этот файл
+нормально установился, приложение заработало, причем наблюдаемой при
+отладке ошибки не возникло.

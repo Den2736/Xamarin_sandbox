@@ -21,8 +21,18 @@ namespace Xamarin_quick_start
             if (alert)
             {
                 var dialer = DependencyService.Get<IDialer>();
-                dialer?.Dial(phoneNumber);
+                if (dialer != null)
+                {
+                    App.CallHistory.Add(phoneNumber);
+                    callHistoryButton.IsEnabled = true;
+                    dialer.Dial(phoneNumber);
+                }
             }
+        }
+
+        private async void callHistoryButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new СallHistoryPage());
         }
     }
 }
